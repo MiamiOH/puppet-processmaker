@@ -30,17 +30,20 @@ matrix:
     -
       env: PUPPET_GEM_VERSION="~> 4.0" CHECK=parallel_spec
       rvm: 2.1.9
+    -
+      env: PUPPET_GEM_VERSION="~> 5.0" CHECK=build DEPLOY_TO_FORGE=yes
 branches:
   only:
     - master
     - /^v\d/
+    - /^\d/
 notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: puppet
+  user: MiamiOH
   password:
-    secure: ""
+    secure: "AShnvxpRbuSDBmpf5yGJldjkucDOZfTt03MNQPk6srhTX6kSHULGqndufTSV2FgxNBL3Bs9xu5uwBWmTCp3H4cYE9qkEFuj42EtlSX/ke6kpXXAL/lLZYSfL2qpX3HKGjQfoXDSVHx33YbiXvlRdZdk6mVYuSih0w0fjzrLN1treaVCMb3YX23hq6kx3Nbz28ZjwKBW8GAbm552NiuoeRCzX7P/BbN6Y3K+DW9GJXETKIGyAlsMfb5+c8lRwsp188w32g0Q91OvUa/XCYg+8BhBo48XElticGlZuAHJeeHDMEG5jNVkur+hfEBoUH3KJtDAkb5iGNgouh04I+VzfQVI5yDzlfiPT9QaI5bjWrUwjt+BFnc0LwKyNAbfZ6McpIt1bZo4c9fpFH1P6gr/2ogUR87hth0ADJ4dvunjxT+3a+ImrPeU7A2DQpUdPjNXYRKGRt9wgC4gGvJIPTelcHFdTRzb6iXfSQHjkOk1YQNViv8UEabUmQCb8sW4wEeqEqVwU/HeICAYbzxQq1hdqpFkYwuxSU4Fr1SmfSi1uy44RxGtdPs2rlKjtfTTGNl/GBCwfbXgTI4/uQgTVrkqamQpRMlQ2eelQK4eU3Uorurcf3PThahIJa34o8/cgjU16BH9el0BkXi+Bu9/hw4R6oh0/7aGdNkoIKH7xVugrQmg="
   on:
     tags: true
     all_branches: true
