@@ -4,7 +4,11 @@
 #
 # @example
 #   include processmaker
-class processmaker {
+class processmaker (
+  $user            = $::processmaker::params::user,
+  $group           = $::processmaker::params::group,
+  $server_root     = $::processmaker::params::server_root,
+  ) {
   package { 'processmaker' :
     ensure => present,
   }
