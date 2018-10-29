@@ -5,11 +5,12 @@
 # @example
 #   include processmaker
 class processmaker (
-  $user            = $::processmaker::params::user,
-  $group           = $::processmaker::params::group,
-  $server_root     = $::processmaker::params::server_root,
+  String $pm_user,
+  String $pm_group,
+  Stdlib::Absolutepath $pm_server_root,
+  String $pm_rpm_name,
 ) {
-  package { 'processmaker' :
+  package { '$pm_rpm_name' :
     ensure => present,
   }
 }
