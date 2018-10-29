@@ -15,8 +15,8 @@
 #
 class processmaker::params {
 
-    $user                 = 'apache'
-    $group                = 'apache'
-    $server_root          = '/opt/processmaker'
+  $user                 = 'apache'
+  $group                = 'apache'
+  $server_root          = '/opt/processmaker'
 
 }
