@@ -10,7 +10,7 @@ class processmaker (
   Stdlib::Absolutepath $pm_server_root,
   String $pm_rpm_name,
 ) {
-  package { "$pm_rpm_name" :
+  package { $pm_rpm_name :
     ensure => present,
   }
 
