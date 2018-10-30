@@ -18,7 +18,7 @@ class processmaker (
     ensure => directory,
     mode   => '0755',
     owner  => $pm_user,
-    group  => $pm_grpoup,
+    group  => $pm_group,
   }
 
 }
