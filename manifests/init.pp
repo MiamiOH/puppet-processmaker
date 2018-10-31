@@ -19,7 +19,7 @@ class processmaker (
     mode    => '0755',
     owner   => $pm_user,
     group   => $pm_group,
-    recurse => 'true'
+    recurse => true,
   }
 
 }
