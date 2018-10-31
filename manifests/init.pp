@@ -15,10 +15,11 @@ class processmaker (
   }
 
   file { $pm_server_root:
-    ensure => directory,
-    mode   => '0755',
-    owner  => $pm_user,
-    group  => $pm_group,
+    ensure  => directory,
+    mode    => '0755',
+    owner   => $pm_user,
+    group   => $pm_group,
+    recurse => 'true'
   }
 
 }
