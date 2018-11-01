@@ -3,4 +3,3 @@ processmaker::pm_user: 'apache'
 processmaker::pm_group: 'apache'
 processmaker::pm_server_root: /opt/processmaker
 processmaker::pm_rpm_name: 'miamioh-process-maker'
-processmaker::enable_selinux: 'true'
