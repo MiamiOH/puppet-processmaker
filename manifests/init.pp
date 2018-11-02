@@ -33,7 +33,7 @@ class processmaker (
 
     if $facts['selinux'] == true {
       selinux::fcontext { 'set selinux processmaker home':
-        seltype  => 'httpd_sys_content_t',
+        seltype  => 'httpd_sys_rw_content_t',
         pathspec => "${pm_server_root}(/.*)?",
       } ~> selinux::exec_restorecon { "${pm_server_root}/logs": }
     }
