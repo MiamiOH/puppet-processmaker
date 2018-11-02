@@ -9,6 +9,7 @@ class processmaker (
   String $pm_group,
   Stdlib::Absolutepath $pm_server_root,
   String $pm_rpm_name,
+  String $enable_selinux,
 ) {
 
   package { $pm_rpm_name :
@@ -22,4 +23,19 @@ class processmaker (
     recurse => true,
   }
 
+  if $facts['os']['family'] == 'RedHat' {
+    include ::selinux
+    if is_string($enable_selinux) {
+      $selinux_enabled = str2bool($enable_selinux)
+    } else {
+      $selinux_enabled = $enable_selinux
+    }
+
+    if $facts['selinux'] == true {
+      selinux::fcontext { 'set selinux processmaker home':
+        seltype  => 'httpd_sys_content_t',
+        pathspec => "${pm_server_root}(/.*)?",
+      } ~> selinux::exec_restorecon { "${pm_server_root}/logs": }
+    }
+  }
 }
