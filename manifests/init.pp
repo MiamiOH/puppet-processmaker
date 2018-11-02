@@ -24,6 +24,7 @@ class processmaker (
     include ::selinux
     if $facts['selinux'] == true {
       selinux::fcontext { 'set selinux processmaker home':
+        ensure   => 'present',
         seltype  => 'httpd_sys_rw_content_t',
         pathspec => "${pm_server_root}(/.*)?",
       } ~> selinux::exec_restorecon { "${pm_server_root}/logs": }
