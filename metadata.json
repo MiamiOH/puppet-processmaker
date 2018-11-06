@@ -1,6 +1,6 @@
 {
   "name": "luoy-processmaker",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "author": "luoy",
   "summary": "processmaker install and config",
   "license": "LGPL-3.0-or-later",
@@ -12,7 +12,7 @@
     },
     {
       "name": "puppet/selinux",
-      "version_requirement": ">= 1.6.1"
+      "version_requirement": ">= 1.5.2"
     },
     {
       "name": "puppet/php",
