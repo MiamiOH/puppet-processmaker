@@ -11,6 +11,8 @@ class processmaker (
   String $pm_rpm_name,
 ) {
 
+  contain '::processmaker::extension'
+
   package { $pm_rpm_name :
     ensure => present,
   }
