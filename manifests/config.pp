@@ -34,7 +34,7 @@ class processmaker::config {
         ensure   => 'present',
         seltype  => 'httpd_sys_rw_content_t',
         pathspec => "${processmaker::pm_server_root}(/.*)?",
-      } ~> selinux::exec_restorecon { "${processmaker::pm_server_root}": }
+      } ~> selinux::exec_restorecon { $processmaker::pm_server_root: }
     }
   }
 
