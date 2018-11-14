@@ -21,11 +21,7 @@ class processmaker (
   package { $pm_rpm_name :
     ensure => present,
   }
-  -> file { $pm_server_root:
-    ensure  => directory,
-    owner   => $pm_user,
-    group   => $pm_group,
-    recurse => true,
-  }
+  -> Class['::processmaker::extension']
+  -> Class['::processmaker::config']
 
 }

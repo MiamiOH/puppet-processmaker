@@ -6,17 +6,24 @@
 #   include processmaker
 class processmaker::config {
 
+  file { $processmaker::pm_server_root:
+    ensure  => directory,
+    owner   => $processmaker::pm_user,
+    group   => $processmaker::pm_group,
+    recurse => true,
+  }
+
   file { "${processmaker::pm_server_root}/shared/sites/workflow/databases.php":
     ensure  => file,
-    owner   => 'apache',
-    group   => 'apache',
+    owner   => $processmaker::pm_user,
+    group   => $processmaker::pm_group,
     content => template("${module_name}/databases.php.erb"),
   }
 
   file { "${processmaker::pm_server_root}/shared/sites/workflow/db.php":
     ensure  => file,
-    owner   => 'apache',
-    group   => 'apache',
+    owner   => $processmaker::pm_user,
+    group   => $processmaker::pm_group,
     content => template("${module_name}/db.php.erb"),
   }
 
@@ -27,7 +34,7 @@ class processmaker::config {
         ensure   => 'present',
         seltype  => 'httpd_sys_rw_content_t',
         pathspec => "${processmaker::pm_server_root}(/.*)?",
-      } ~> selinux::exec_restorecon { "${processmaker::pm_server_root}/logs": }
+      } ~> selinux::exec_restorecon { "${processmaker::pm_server_root}": }
     }
   }
 
