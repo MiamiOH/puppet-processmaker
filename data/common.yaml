@@ -6,3 +6,5 @@ processmaker::pm_rpm_name: 'miamioh-process-maker'
 processmaker::dbhostname: 'localhost'
 processmaker::dbname: 'processmaker'
 processmaker::dbuser: 'processmaker'
+processmaker::casurl: 'localhost'
+processmaker::casenabled: 0

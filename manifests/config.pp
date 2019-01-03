@@ -18,6 +18,7 @@ class processmaker::config {
     owner   => $processmaker::pm_user,
     group   => $processmaker::pm_group,
     content => template("${module_name}/databases.php.erb"),
+    mode    => '0640',
   }
 
   file { "${processmaker::pm_server_root}/shared/sites/workflow/db.php":
@@ -25,6 +26,15 @@ class processmaker::config {
     owner   => $processmaker::pm_user,
     group   => $processmaker::pm_group,
     content => template("${module_name}/db.php.erb"),
+    mode    => '0640',
+  }
+
+  file { "${processmaker::pm_server_root}/workflow/engine/config/env.ini":
+    ensure  => file,
+    owner   => $processmaker::pm_user,
+    group   => $processmaker::pm_group,
+    content => template("${module_name}/env.ini.erb"),
+    mode    => '0640',
   }
 
   if $facts['os']['family'] == 'RedHat' {

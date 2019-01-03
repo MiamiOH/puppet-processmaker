@@ -13,6 +13,8 @@ class processmaker (
   String $dbname,
   String $dbuser,
   String $dbpassword,
+  String $casurl,
+  Integer $casenabled,
 ) {
 
   contain '::processmaker::extension'
