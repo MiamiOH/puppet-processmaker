@@ -21,7 +21,7 @@ class processmaker (
   contain '::processmaker::config'
 
   package { $pm_rpm_name :
-    ensure => present,
+    ensure => latest,
   }
   -> Class['::processmaker::extension']
   -> Class['::processmaker::config']
