@@ -13,6 +13,7 @@ class processmaker (
   String $dbname,
   String $dbuser,
   String $dbpassword,
+  String $packageensure,
   String $casurl,
   Integer $casenabled,
 ) {
@@ -21,7 +22,7 @@ class processmaker (
   contain '::processmaker::config'
 
   package { $pm_rpm_name :
-    ensure => latest,
+    ensure => $packageensure,
   }
   -> Class['::processmaker::extension']
   -> Class['::processmaker::config']
