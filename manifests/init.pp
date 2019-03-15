@@ -16,6 +16,7 @@ class processmaker (
   String $packageensure,
   String $casurl,
   Integer $casenabled,
+  String $pswshost,
   String $pswsuser,
   String $pswspass,
 ) {
