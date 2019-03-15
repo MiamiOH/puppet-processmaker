@@ -16,6 +16,8 @@ class processmaker (
   String $packageensure,
   String $casurl,
   Integer $casenabled,
+  String $pswsuser,
+  String $pswspass,
 ) {
 
   contain '::processmaker::extension'

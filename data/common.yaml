@@ -9,3 +9,5 @@ processmaker::dbuser: 'processmaker'
 processmaker::packageensure: 'latest'
 processmaker::casurl: 'localhost'
 processmaker::casenabled: 0
+processmaker::pswsuser: 'pm_ws_user'
+processmaker::pswspass: ''
