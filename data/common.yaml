@@ -9,6 +9,6 @@ processmaker::dbuser: 'processmaker'
 processmaker::packageensure: 'latest'
 processmaker::casurl: 'localhost'
 processmaker::casenabled: 0
-processmaker::pswshost: 'https://ws.apps.miamioh.edu/'
+processmaker::pswsurl: 'https://ws.apps.miamioh.edu/'
 processmaker::pswsuser: 'pm_ws_user'
 processmaker::pswspass: ''
