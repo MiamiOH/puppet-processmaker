@@ -12,3 +12,5 @@ processmaker::casenabled: 0
 processmaker::pswsurl: 'https://ws.apps.miamioh.edu/'
 processmaker::pswsuser: 'pm_ws_user'
 processmaker::pswspass: ''
+processmaker::numberlogfile: 30
+processmaker::configitems: {}
