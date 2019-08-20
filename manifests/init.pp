@@ -19,6 +19,8 @@ class processmaker (
   String $pswsurl,
   String $pswsuser,
   String $pswspass,
+  Integer $numberlogfile,
+  Hash $configitems,
 ) {
 
   contain '::processmaker::extension'

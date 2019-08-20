@@ -6,6 +6,8 @@
 #   include processmaker
 class processmaker::config {
 
+  $configitems = $processmaker::configitems.join_keys_to_values(' = ').join("\n")
+
   file { $processmaker::pm_server_root:
     ensure  => directory,
     owner   => $processmaker::pm_user,
