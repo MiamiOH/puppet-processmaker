@@ -6,7 +6,7 @@
 #   include processmaker
 class processmaker::extension {
 
-  include '::php'
+  include 'php'
 
   php::extension { ['xml', 'gd', 'soap', 'ldap', 'mbstring', 'mcrypt', 'pecl-apcu']:
     ensure => present,
