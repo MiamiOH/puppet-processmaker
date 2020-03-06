@@ -23,8 +23,8 @@ class processmaker (
   Hash $configitems,
 ) {
 
-  contain '::processmaker::extension'
-  contain '::processmaker::config'
+  contain 'processmaker::extension'
+  contain 'processmaker::config'
 
   package { $pm_rpm_name :
     ensure => $packageensure,

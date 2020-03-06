@@ -5,4 +5,6 @@ fixtures:
   forge_modules:
      stdlib: "puppetlabs/stdlib"
      selinux: "puppet/selinux"
-     php: "mayflower/php" 
+     archive: "puppet/archive"
+     inifile: "puppetlabs/inifile"
+     php: "puppet/php" 

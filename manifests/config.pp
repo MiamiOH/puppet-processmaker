@@ -40,7 +40,7 @@ class processmaker::config {
   }
 
   if $facts['os']['family'] == 'RedHat' {
-    include ::selinux
+    include selinux
     if $facts['selinux'] == true {
       selinux::fcontext { 'set selinux processmaker home':
         ensure   => 'present',
