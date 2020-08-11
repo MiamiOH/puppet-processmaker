@@ -1,6 +1,6 @@
 {
   "name": "MiamiOH-processmaker",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "luoy",
   "summary": "processmaker install and config",
   "license": "GPL-3.0+",
@@ -12,7 +12,7 @@
     },
     {
       "name": "puppet/selinux",
-      "version_requirement": ">= 1.5.2 < 2.0.0"
+      "version_requirement": ">= 3.2.0 < 4.0.0"
     },
     {
       "name": "puppet/php",
