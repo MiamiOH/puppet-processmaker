@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.12
+    * Update puppet-php mudule dependancy to allow 8.0.0 maximum
+
 ## Release 1.0.11
     * Update puppet-selinux mudule dependancy to 3.2.0
 
