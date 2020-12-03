@@ -9,9 +9,9 @@ class processmaker::config {
   $configitems = $processmaker::configitems.join_keys_to_values(' = ').join("\n")
 
   file { $processmaker::pm_server_root:
-    ensure  => directory,
-    owner   => $processmaker::pm_user,
-    group   => $processmaker::pm_group,
+    ensure => directory,
+    owner  => $processmaker::pm_user,
+    group  => $processmaker::pm_group,
   }
 
   file { "${processmaker::pm_server_root}/shared/sites/workflow/databases.php":

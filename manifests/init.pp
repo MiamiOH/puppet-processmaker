@@ -29,7 +29,7 @@ class processmaker (
   package { $pm_rpm_name :
     ensure => $packageensure,
   }
-  -> Class['::processmaker::extension']
-  -> Class['::processmaker::config']
+  -> Class['processmaker::extension']
+  -> Class['processmaker::config']
 
 }
