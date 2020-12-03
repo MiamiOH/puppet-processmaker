@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.14
+    * Remove recursive file ownership 
+
 ## Release 1.0.12
     * Update puppet-php mudule dependancy to allow 8.0.0 maximum
 

@@ -12,7 +12,6 @@ class processmaker::config {
     ensure  => directory,
     owner   => $processmaker::pm_user,
     group   => $processmaker::pm_group,
-    recurse => true,
   }
 
   file { "${processmaker::pm_server_root}/shared/sites/workflow/databases.php":
