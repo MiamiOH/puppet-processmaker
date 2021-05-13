@@ -59,7 +59,7 @@ class processmaker::config {
   }
 
   exec { 'reread workflow':
-    command => 'supervisorctl reread &&  supervisorctl update && supervisorctl start laravel-worker-workflow:*',
+    command => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*',
   }
 
   if $facts['os']['family'] == 'RedHat' {
