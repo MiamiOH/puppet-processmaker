@@ -38,6 +38,33 @@ class processmaker::config {
     mode    => '0640',
   }
 
+  if $duo_unix::manage_ssh {
+    service { "supervisord":
+      ensure  => running,
+      enable  => true,
+      require => package["supervisor"]
+    }
+  }
+
+  package { "supervisor":
+    ensure  => 'installed',
+    require => [
+      File["/etc/supervisord.d/laravel-worker-workflow.ini"]
+    ]
+  }
+
+  file { "/etc/supervisord.d/laravel-worker-workflow.ini":
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template("${module_name}/workflow.ini.erb"),
+    notify  => Exec['reread workflow']
+  }
+
+  exec { 'reread workflow':
+    command => 'supervisorctl reread &&  supervisorctl update && supervisorctl start laravel-worker-workflow:*'
+  }
+
   if $facts['os']['family'] == 'RedHat' {
     include selinux
     if $facts['selinux'] == true {
