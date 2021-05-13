@@ -21,7 +21,7 @@ class processmaker (
   String $pswspass,
   Integer $numberlogfile,
   Hash $configitems,
-  Boolean $monitor_queue = true,
+  Boolean $monitor_queue = false,
 ) {
 
   contain 'processmaker::extension'
