@@ -38,31 +38,6 @@ class processmaker::config {
     mode    => '0640',
   }
 
-  service { 'supervisord':
-    ensure  => running,
-    enable  => true,
-    require => Package['supervisor'],
-  }
-
-  package { 'supervisor':
-    ensure => 'installed',
-    before => [
-      File['/etc/supervisord.d/laravel-worker-workflow.ini']
-    ],
-  }
-
-  file { '/etc/supervisord.d/laravel-worker-workflow.ini':
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => template("${module_name}/workflow.ini.erb"),
-    notify  => Exec['reread workflow'],
-  }
-
-  exec { 'reread workflow':
-    command => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*',
-  }
-
   if $facts['os']['family'] == 'RedHat' {
     include selinux
     if $facts['selinux'] == true {
