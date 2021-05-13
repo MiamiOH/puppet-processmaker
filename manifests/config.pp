@@ -39,9 +39,9 @@ class processmaker::config {
   }
 
   service { 'supervisord':
-      ensure  => running,
-      enable  => true,
-      require => package['supervisor'],
+    ensure  => running,
+    enable  => true,
+    require => package['supervisor'],
   }
 
   package { 'supervisor':
