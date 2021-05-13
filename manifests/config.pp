@@ -45,8 +45,8 @@ class processmaker::config {
   }
 
   package { 'supervisor':
-    ensure  => 'installed',
-    require => [
+    ensure => 'installed',
+    before => [
       File['/etc/supervisord.d/laravel-worker-workflow.ini']
     ],
   }
