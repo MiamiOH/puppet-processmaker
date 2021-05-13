@@ -38,12 +38,10 @@ class processmaker::config {
     mode    => '0640',
   }
 
-  if $duo_unix::manage_ssh {
-    service { 'supervisord':
+  service { 'supervisord':
       ensure  => running,
       enable  => true,
       require => package['supervisor'],
-    }
   }
 
   package { 'supervisor':
