@@ -27,7 +27,7 @@ class processmaker (
   contain 'processmaker::extension'
   contain 'processmaker::config'
 
-  if $processmaker::monitor_queue {
+  if $monitor_queue {
     contain 'processmaker::queue_monitor'
   }
 
