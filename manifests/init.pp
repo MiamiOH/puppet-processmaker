@@ -27,6 +27,10 @@ class processmaker (
   contain 'processmaker::extension'
   contain 'processmaker::config'
 
+  if $processmaker::monitor_queue {
+    contain 'processmaker::queue_monitor'
+  }
+  
   package { $pm_rpm_name :
     ensure => $packageensure,
   }
