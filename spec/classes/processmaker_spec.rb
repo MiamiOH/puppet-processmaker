@@ -22,7 +22,7 @@ describe 'processmaker' do
           is_expected.to contain_file('/opt/processmaker/workflow/engine/config/env.ini').with(
             'ensure'  => 'file',
             'path'    => '/opt/processmaker/workflow/engine/config/env.ini',
-            'content' => %r{number_log_file = 50\nitem1 = value1\nitem2 = value2$},
+            'content' => %r{number_log_file = 50\nitem1 = value1\nitem2 = value2},
           )
         end
       end

@@ -1,0 +1,8 @@
+[program:laravel-worker-workflow]
+process_name=%(program_name)s_%(process_num)02d
+directory=/opt/processmaker/
+command=/opt/processmaker/processmaker artisan queue:work --workspace=workflow  --sleep=3 --tries=3 --daemon
+autostart=true
+autorestart=true
+user=apache
+stdout_logfile=/opt/processmaker/worker-workflow.log
