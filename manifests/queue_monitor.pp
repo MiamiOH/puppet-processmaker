@@ -5,7 +5,11 @@
 # @example
 #   include processmaker
 class processmaker::queue_monitor {
+
   if $processmaker::monitor_queue {
+
+    contain 'processmaker::queue_monitor'
+
     service { 'supervisord':
       ensure  => running,
       enable  => true,
@@ -28,7 +32,8 @@ class processmaker::queue_monitor {
     }
 
     exec { 'reread workflow':
-      command => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*',
+      command     => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*',
+      refreshonly => true,
     }
   }
 }

@@ -21,12 +21,11 @@ class processmaker (
   String $pswspass,
   Integer $numberlogfile,
   Hash $configitems,
-  Boolean $monitor_queue = false,
+  Boolean $monitor_queue,
 ) {
 
   contain 'processmaker::extension'
   contain 'processmaker::config'
-  contain 'processmaker::queue_monitor'
 
   package { $pm_rpm_name :
     ensure => $packageensure,
