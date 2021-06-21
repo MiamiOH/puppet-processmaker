@@ -27,7 +27,7 @@ class processmaker::queue_monitor {
   }
 
   exec { 'reread workflow':
-    command     => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*',
+    command     => '/usr/bin/supervisorctl reread && /usr/bin/supervisorctl update && /usr/bin/supervisorctl start laravel-worker-workflow:*', # lint:ignore:140chars
     refreshonly => true,
   }
 }

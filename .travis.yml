@@ -1,43 +1,54 @@
 ---
-dist: trusty
+os: linux
+dist: xenial
 language: ruby
 cache: bundler
 before_install:
   - bundle -v
   - rm -f Gemfile.lock
-  - gem update --system $RUBYGEMS_VERSION
+  - "# Update system gems if requested. This is useful to temporarily workaround troubles in the test runner"
+  - "# See https://github.com/puppetlabs/pdk-templates/commit/705154d5c437796b821691b707156e1b056d244f for an example of how this was used"
+  - "# Ignore exit code of SIGPIPE'd yes to not fail with shell's pipefail set"
+  - '[ -z "$RUBYGEMS_VERSION" ] || (yes || true) | gem update --system $RUBYGEMS_VERSION'
   - gem --version
   - bundle -v
 script:
   - 'bundle exec rake $CHECK'
 bundler_args: --without system_tests
 rvm:
-  - 2.5.1
-env:
-  global:
-    - BEAKER_PUPPET_COLLECTION=puppet6 PUPPET_GEM_VERSION="~> 6.0"
-matrix:
+  - 2.5.7
+stages:
+  - static
+  - spec
+  - acceptance
+  -
+    if: tag =~ ^v\d
+    name: deploy
+jobs:
   fast_finish: true
   include:
     -
-      env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
+      env: CHECK="check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop syntax lint metadata_lint"
+      stage: static
     -
-      env: CHECK=parallel_spec
-    -
-      env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
-      rvm: 2.4.4
+      env: PUPPET_GEM_VERSION="~> 6.0" CHECK=parallel_spec
+      rvm: 2.5.7
+      stage: spec
     -
       env: PUPPET_GEM_VERSION="~> 5.0" CHECK=build DEPLOY_TO_FORGE=yes
+    -
+      env: DEPLOY_TO_FORGE=yes
+      stage: deploy
 branches:
   only:
-    - master
+    - main
     - /^v\d/
     - /^\d/
 notifications:
   email: false
 deploy:
   provider: puppetforge
-  user: MiamiOH
+  username: MiamiOH
   password:
     secure: "UNqfxODE58dUYpTh6hVuNyizmIrdWSRGu0zSkzPxwPOztuX37kUI4TdFZ/j+5LElC/w8h62uf7C0myZg18GzJj/1AVCZesz+knpR78x+2Dmna5t3Shi8nJxqSYko2l4u913D6z0x7v3nKWzw8Pw/zkPM2043Om6ZYd6ESwVbc/58xsydwn4EOvTzmYuH+kZs3yPMTX2m1zHhk28dHRDZ6uIGiw4rtvNIFHTkfkHdkFuG/4N6H6XD1Z6QRN3TKopa7fRpd4GzJQ5W5w2O+AuaxzUr9HJoOBi3kj6qaUwF2cUtC8jC/SShCyYLO98VUz94iSeFDwuTQuQKNofPD0eo1Z3T+utI6QAL3Iep6kGxJKa6OEIosU2bFvsDKprRpS4bUpm4tSg2YfFJHsTl4+ZVaXuDdcGwrPeYo8onbmDDc0DNkCGgQ5yyMcEXBfLTed56/NWZ/6en/le13Hk6FAgBLJbfB0Jkz9FU7X3YUWjq1nKJnWpmEgtawhBnzQSjABTPyJ9dsU/DqF2bifAN7lXG2nCYSJtIpcVni4bfEWoVB/qW1uEjpkzeB55iYVrpWJ2FKeqJZkedcCy0iIUVrpl3s3uo38kVSnrE1P5lhoHKQJsVYbRA6ZOnaV+VjX8jiuXzWuDv9469/nkHEREYfgygRHxZDsoTNRWcJCImukdGq4A="
   on:

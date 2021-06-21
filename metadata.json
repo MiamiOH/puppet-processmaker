@@ -1,6 +1,6 @@
 {
   "name": "MiamiOH-processmaker",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "author": "luoy",
   "summary": "processmaker install and config",
   "license": "GPL-3.0+",
@@ -8,7 +8,7 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.13.0 < 7.0.0"
+      "version_requirement": ">= 4.13.0 < 8.0.0"
     },
     {
       "name": "puppet/selinux",
@@ -48,10 +48,10 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 7.0.0"
+      "version_requirement": ">= 6.0.0 < 8.0.0"
     }
   ],
-  "pdk-version": "1.17.0",
-  "template-url": "https://github.com/puppetlabs/pdk-templates#1.9.0",
-  "template-ref": "tags/1.9.0-0-g7281db5"
+  "pdk-version": "2.1.0",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#2.1.0",
+  "template-ref": "tags/2.1.0-0-ga675ea5"
 }
