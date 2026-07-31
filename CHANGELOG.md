@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.0.17
+    * fix php extension defines to clean up puppet runs
+
+## Release 1.0.16
+    * bump dependencies
+
 ## Release 1.0.15
     * add supervised for 3.3 and above version
 
